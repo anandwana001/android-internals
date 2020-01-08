@@ -10,7 +10,7 @@ This repository consists of questions, all about the internal working of android
  - [`finishOnTaskLaunch`](https://developer.android.com/guide/topics/manifest/activity-element.html#finish) - When this attribute set to a true, existing instance of the activity should be shut down whenever the task launches.
 
 
-<br></br>
+
 2.  What are the different types of intent flags?
 3.  What are the different types of  `launchModes`?
 4.  Navigation between activities?
