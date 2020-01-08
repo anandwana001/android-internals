@@ -11,7 +11,11 @@ This repository consists of questions, all about the internal working of android
 
 
 
-2.  What are the different types of intent flags?
+2.  What are the different types of intent flags? [MindOrks Blog](https://blog.mindorks.com/android-task-and-back-stack-review-5017f2c18196)
+ - [`FLAG_ACTIVITY_NEW_TASK`](https://developer.android.com/reference/android/content/Intent.html#FLAG_ACTIVITY_NEW_TASK) - If an Activity does not exist in an already created Task, then it starts the Activity in a new Task with Activity’s new instance at the root of the Task’s back stack, else the Task is brought forward with the Activity’s last state restored and this Activity receives the new intent in onNewIntent method. Only one instance of the Activity can exist at a time. In this case, the Back button is still able to return the user to the previous Task’s Activity.
+ - [`FLAG_ACTIVITY_CLEAR_TOP`](https://developer.android.com/reference/android/content/Intent.html#FLAG_ACTIVITY_CLEAR_TOP) - This flag simply clear(`onDestory()`) all other activities running on top of the stack and receive the intent in `onNewIntent()` method. For example - A, B, C, D and D calls B which will make C and D to get clear and left with A, B. 
+ - [`FLAG_ACTIVITY_SINGLE_TOP`](https://developer.android.com/reference/android/content/Intent.html#FLAG_ACTIVITY_SINGLE_TOP) - When we want to launch the same activity which is already on the top of the stack but we don't want to create its new instance then we use this flag. If we don't use this flag our back stack will look like this: A, B, C, D, D calling D from D. If we use this flag and calling D from D will look like this: A, B, C, D. If we want to call A from D then our back stack will look like A, B, C, D, A. 
+ 
 3.  What are the different types of  `launchModes`?
 4.  Navigation between activities?
 5.  Navigation between fragments?
