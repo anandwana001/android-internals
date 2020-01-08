@@ -92,9 +92,9 @@ override fun onBackPressed() {
 
 
 ### Questions from other resources
-- **Mention two ways to clear the back stack of Activities when a new Activity is called using intent.**<br>
+- **[Mention two ways to clear the back stack of Activities when a new Activity is called using intent.](https://github.com/anitaa1990/Android-Cheat-sheet)**<br>
 The first approach is to use a `FLAG_ACTIVITY_CLEAR_TOP` flag. The second way is by using `FLAG_ACTIVITY_CLEAR_TASK` and `FLAG_ACTIVITY_NEW_TASK` in conjunction.
 
-- **What’s the difference between FLAG_ACTIVITY_CLEAR_TASK and FLAG_ACTIVITY_CLEAR_TOP?**<br>
+- **[What’s the difference between FLAG_ACTIVITY_CLEAR_TASK and FLAG_ACTIVITY_CLEAR_TOP?](https://github.com/anitaa1990/Android-Cheat-sheet)**<br>
 `FLAG_ACTIVITY_CLEAR_TASK` is used to clear all the activities from the task including any existing instances of the class invoked. The Activity launched by intent becomes the new root of the otherwise empty task list. This flag has to be used in conjunction with `FLAG_ ACTIVITY_NEW_TASK`.<br>
 `FLAG_ACTIVITY_CLEAR_TOP` on the other hand, if set and if an old instance of this Activity exists in the task list then barring that all the other activities are removed and that old activity becomes the root of the task list. Else if there’s no instance of that activity then a new instance of it is made the root of the task list. Using `FLAG_ACTIVITY_NEW_TASK` in conjunction is a good practice, though not necessary.
