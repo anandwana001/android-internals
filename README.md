@@ -17,6 +17,14 @@ This repository consists of questions, all about the internal working of android
  - [`FLAG_ACTIVITY_SINGLE_TOP`](https://developer.android.com/reference/android/content/Intent.html#FLAG_ACTIVITY_SINGLE_TOP) - When we want to launch the same activity which is already on the top of the stack but we don't want to create its new instance then we use this flag. If we don't use this flag our back stack will look like this: A, B, C, D, D calling D from D. If we use this flag and calling D from D will look like this: A, B, C, D. If we want to call A from D then our back stack will look like A, B, C, D, A. 
  
 **3.  What are the different types of  `launchModes`?**<br>
+```
+<activity android:launchMode = [“standard” | “singleTop” | “singleTask” | “singleInstance”] ../>
+```
+ - **Standard** - Default launch mode. New instance of an activity will be created in the same or different tasks. Also, multiple task can be created. A, B, C, D and now starting B which has launch mode standard then our back stack will look like A, B, C, D, B
+ - **Single Top** - New instance of an activity will not be created if it already exists on the top of the back stack. 
+ - **Single Task** - New instance of an activity will be created in new task if doesn't exist in the already created task else the task brought to the front with the last same state. 
+ - **Single Instance** - This is similar as single task but the task holding this activity instance will not any other activity. 
+
 **4.  Navigation between activities?**<br>
 **5.  Navigation between fragments?**<br>
 **6.  Navigation between activity and fragment?**<br>
