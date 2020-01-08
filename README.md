@@ -26,6 +26,30 @@ This repository consists of questions, all about the internal working of android
  - **Single Instance** - This is similar as single task but the task holding this activity instance will not any other activity. 
 
 **4.  Navigation between activities?**<br>
+If we want results back from the new activity we use `startActivityForResult()` or if we don't want any result we simply use `startActivity()`. We pass intent object as argument to these methods. The result comes back through the `onActivityResult(int, int, Intent)` method.
+```
+val intent = Intent(this, SignInActivity::class.java)
+startActivity(intent)
+
+startActivityForResult(intent , REQUEST_CODE)
+
+override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+        when (requestCode) {
+            REQUEST_CODE ->
+                if (resultCode == RESULT_OK) {
+                    // extract data from intent
+                }
+        }
+    }
+```
+Going back to previous activity. This will pop the activity from the back stack.
+```
+override fun onBackPressed() {
+    super.onBackPressed()
+}
+```
+
+
 **5.  Navigation between fragments?**<br>
 **6.  Navigation between activity and fragment?**<br>
 **7.  Type of services?**<br>
@@ -65,3 +89,12 @@ This repository consists of questions, all about the internal working of android
 **41.  `WorkManager`**<br>
 **42.  `RxJava`  operators?**<br>
 **43.  What is obfuscation?**<br>
+
+
+### Questions from other resources
+- **Mention two ways to clear the back stack of Activities when a new Activity is called using intent.**<br>
+The first approach is to use a `FLAG_ACTIVITY_CLEAR_TOP` flag. The second way is by using `FLAG_ACTIVITY_CLEAR_TASK` and `FLAG_ACTIVITY_NEW_TASK` in conjunction.
+
+- **What’s the difference between FLAG_ACTIVITY_CLEAR_TASK and FLAG_ACTIVITY_CLEAR_TOP?**<br>
+`FLAG_ACTIVITY_CLEAR_TASK` is used to clear all the activities from the task including any existing instances of the class invoked. The Activity launched by intent becomes the new root of the otherwise empty task list. This flag has to be used in conjunction with `FLAG_ ACTIVITY_NEW_TASK`.<br>
+`FLAG_ACTIVITY_CLEAR_TOP` on the other hand, if set and if an old instance of this Activity exists in the task list then barring that all the other activities are removed and that old activity becomes the root of the task list. Else if there’s no instance of that activity then a new instance of it is made the root of the task list. Using `FLAG_ACTIVITY_NEW_TASK` in conjunction is a good practice, though not necessary.
